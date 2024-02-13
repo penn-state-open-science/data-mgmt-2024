@@ -47,11 +47,17 @@ aee32@psu.edu</br></br>
 :::
 ::::
 
-<!-- ### Bari Fuchs -->
+### Bari Fuchs
 
-<!-- :::: {.columns} -->
-<!-- ::: {.column width="40%"} -->
-<!-- ::: -->
-<!-- ::: {.column width="60%"} -->
-<!-- ::: -->
-<!-- ::: -->
+:::: {.columns}
+::: {.column width="40%"}
+![](include/img/fuchs-bari.png)
+:::
+::: {.column width="60%"}
+
+Bari Fuchs recently received her Ph.D. in Nutritional Sciences at Penn State, where she studied neural and decision-making correlates of pediatric eating behaviors. She has 10 years of experience managing and processing multi-modal data (survey, behavioral, neuroimaging) for research studies. Dr. Fuchs places a strong emphasis on transparency and reproducibility in her data management approach. She achieves this by developing software to clean and organize data, implementing field-standardized data organization structures, and sharing data and code on public repositories.
+
+baf44@psu.edu 
+
+:::
+:::
