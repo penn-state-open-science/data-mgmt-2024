@@ -13,6 +13,11 @@ We have added `csv/` to the `.gitignore` file so that the data remains available
 Also, note that Rick Gilmore has stored his Gmail account information in an environment variable called `GMAIL_SURVEY`.
 
 ```{r}
+library(ggplot2)
+```
+
+
+```{r}
 if (!dir.exists('csv')) {
   message("Creating missing `csv/`.")
   dir.create("csv")
@@ -66,7 +71,11 @@ registrations_clean <- registrations |>
       `FOOD SCIENCE` = "Food Science",
       `Earth and Mineral Sciences, Energy Institute` = "Energy Institute",
       `Center for Healthy Aging / HHD` = "Center for Healthy Aging",
-      `BMB` = "Biochemistry & Molecular Biology"
+      `BMB` = "Biochemistry & Molecular Biology",
+      `Spanish, Italian and Portuguese` = "Spanish, Italian, & Portuguese",
+      `Spanish, Italian, and Portuguese` = "Spanish, Italian, & Portuguese",
+      `Department of Nutritional Sciences` = "Nutritional Sciences",
+      `Department of Medicine, Division of Endocrinology` = "Medicine"
     )
   ) |>
   # Add college
@@ -91,11 +100,12 @@ registrations_clean <- registrations |>
       "Asian Studies" ~ "CLA",
       "IST" ~ "IST",
       "Anthropology" ~ "CLA",
-      "Chemical Engineering" ~ "Engineering",
-      "Civil and Environmental Engineering" ~ "Engineering",
-      "Material Science and Engineering" ~ "Engineering",
-      "Engineering Science & Mechanics" ~ "Engineering",
-      "Biomedical Engineering" ~ "Engineering",
+      "Chemical Engineering" ~ "Eng",
+      "Civil and Environmental Eng" ~ "Eng",
+      "Material Science and Engineering" ~ "Eng",
+      "Engineering Science & Mechanics" ~ "Eng",
+      "Biomedical Engineering" ~ "Eng",
+      "Mechanical Engineering" ~ "Eng",
       "Nutritional Sciences" ~ "HHD",
       "HDFS" ~ "HHD",
       "Kinesiology" ~ "HHD",
@@ -105,7 +115,9 @@ registrations_clean <- registrations |>
       "Food Science" ~ "Ag",
       "Ecosystem Science & Mgmt" ~ "Ag",
       "Entomology" ~ "Ag",
+      "Plant Pathology & Environmental Microbiology" ~ "Ag",
       "Neuroscience" ~ "Med",
+      "Medicine" ~ "Med",
       "College of Human and Health Development" ~ "HHD",
       "Center for Healthy Aging" ~ "HHD",
       "Earth & Environmental Systems Institute" ~ "EMS",
@@ -120,8 +132,6 @@ registrations_clean <- registrations |>
 ### Time series
 
 ```{r fig-registration-time-series, fig.cap = "Time series of registrations"}
-library(ggplot2)
-
 registrations_clean |>
   dplyr::arrange(timestamp) |>
   dplyr::mutate(resp_index = seq_along(timestamp)) |>
