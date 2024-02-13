@@ -1,0 +1,52 @@
+---
+title: "Good enough data management practices"
+subtitle: "A workshop"
+format: html
+---
+
+![https://teacherhead.com/2017/02/27/reinventing-the-wheel-again/](https://headguruteacher.files.wordpress.com/2017/02/9464b325-d2f4-4604-8258-82093bf93af6.jpg)
+
+## About the workshop
+
+Best practices in any field can be hard to implement, especially for people early in their career. And data management is often learned through trial and error. So what data management practices are both useful and “good enough” [@Wilson2017-ot] to have an impact on your work? What are the first steps you can take to make your data more FAIR [@Wilkinson2016-qr]? How can these practices improve your data lifecycle and/or pipeline (e.g., data use and re-use within and between labs)?
+
+This workshop will provide a set of practices that can make data management and data sharing easier taught by local experts who have helped many researchers with related challenges.
+
+[Alaina Pearce](people.qmd#alaina-pearce), [Briana Wham](people.qmd#briana-wham), and [Ana Enriquez](people.qmd#ana-enriquez) will lead the workshop.
+
+More details about the [schedule](schedule.qmd) and the [faculty](people.qmd) can be found by following the links.
+
+## Location and time
+
+:::: {.columns}
+::: {.column width="40%"}
+![Dewey Room, University Libraries](https://sc-api.psu.edu/s3/files/styles/4_3_1500w/public/DSC_6681%20for%20PSNews%20Dewey%20room%20naming.jpg?h=6e526c05&itok=fTahAKyt)
+:::
+::: {.column width="10%"}
+:::
+::: {.column width="50%"}
+Dewey Room</br>
+Penn State University Libraries</br>
+University Park, PA
+
+March 27, 2024</br>
+8:30 am - 2:00 pm, March 27, 2024
+:::
+::::
+
+
+## Register!
+
+The workshop is open to all researchers, especially graduate students and postdoctoral researchers, but space is limited.
+
+Register today by visiting <https://forms.gle/WyD4AxajSnz1Wqe67>
+
+Or via the embedded form below:
+
+<iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfHQpMvx0RT4t5NYcxcClZ0wdF8MDZh2mH9HKyo-zdsk4lo_Q/viewform?embedded=true" width="640" height="1514" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+
+## Support
+
+![](include/img/NSF.svg.png){height="20%"}
+
+This workshop is made possible by financial support from the National Science Foundation ([IGE 1955049](https://www.nsf.gov/awardsearch/showAward?AWD_ID=1955049)).
