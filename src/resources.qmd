@@ -38,6 +38,7 @@ if (params$update_data) {
 ```{r}
 registrations <-
   readr::read_csv("csv/data-mgmt-wksp.csv", show_col_types = FALSE)
+
 registrations_clean <- registrations |>
   dplyr::rename(
     timestamp = "Timestamp",
@@ -49,6 +50,70 @@ registrations_clean <- registrations |>
     have_case_study = "Do you have a project or dataset that you would like to have considered for a hands-on case study?",
     case_study_details = "If yes, in a sentence or two, please describe your project or dataset.",
     comments = "Any comments?"
+  ) |>
+  # Remove duplicate rows
+  dplyr::distinct() |>
+  # Convert timestamp into proper dates
+  dplyr::mutate(timestamp = lubridate::mdy_hms(timestamp,
+                                               tz = "America/New_York")) |>
+  # Normalize names
+  dplyr::mutate(
+    unit = dplyr::recode(
+      unit,
+      `ESM-Ecosystem Science and Mgmt` = "Ecosystem Science & Mgmt",
+      `Earth and Environmental Systems Institute` = "Earth & Environmental Systems Institute",
+      `Earth and Environmental Systems Institute` = "Earth & Environmental Systems Institute",
+      `FOOD SCIENCE` = "Food Science",
+      `Earth and Mineral Sciences, Energy Institute` = "Energy Institute",
+      `Center for Healthy Aging / HHD` = "Center for Healthy Aging",
+      `BMB` = "Biochemistry & Molecular Biology"
+    )
+  ) |>
+  # Add college
+  dplyr::mutate(
+    college = dplyr::case_match(
+      unit,
+      "Statistics" ~ "ECoS",
+      "Biology" ~ "ECoS",
+      "Biochemistry & Molecular Biology" ~ "ECoS",
+      "Physics" ~ "ECoS",
+      "Chemistry" ~ "ECoS",
+      "Psychology" ~ "CLA",
+      "Spanish, Italian, & Portuguese" ~ "CLA",
+      "Research Informatics and Publishing" ~ "Libraries",
+      "Political Science" ~ "CLA",
+      "Applied Linguistics" ~ "CLA",
+      "Global Languages & Literatures" ~ "CLA",
+      "Sociology" ~ "CLA",
+      "English" ~ "CLA",
+      "C-SoDA" ~ "CLA",
+      "Office of Digital Pedagogies and Initiatives" ~ "CLA",
+      "Asian Studies" ~ "CLA",
+      "IST" ~ "IST",
+      "Anthropology" ~ "CLA",
+      "Chemical Engineering" ~ "Engineering",
+      "Civil and Environmental Engineering" ~ "Engineering",
+      "Material Science and Engineering" ~ "Engineering",
+      "Engineering Science & Mechanics" ~ "Engineering",
+      "Biomedical Engineering" ~ "Engineering",
+      "Nutritional Sciences" ~ "HHD",
+      "HDFS" ~ "HHD",
+      "Kinesiology" ~ "HHD",
+      "Recreation, Park, & Tourism Management" ~ "HHD",
+      "Bellisario College of Communication" ~ "Comm",
+      "Marketing" ~ "Smeal",
+      "Food Science" ~ "Ag",
+      "Ecosystem Science & Mgmt" ~ "Ag",
+      "Entomology" ~ "Ag",
+      "Neuroscience" ~ "Med",
+      "College of Human and Health Development" ~ "HHD",
+      "Center for Healthy Aging" ~ "HHD",
+      "Earth & Environmental Systems Institute" ~ "EMS",
+      "Energy Institute" ~ "EMS",
+      "Nursing" ~ "Nursing"
+    ),
+    .default = "Unknown",
+    .missing = "Unknown"
   )
 ```
 
@@ -58,14 +123,12 @@ registrations_clean <- registrations |>
 library(ggplot2)
 
 registrations_clean |>
-  dplyr::mutate(timestamp = lubridate::mdy_hms(timestamp, 
-                                               tz = "America/New_York")) |>
   dplyr::arrange(timestamp) |>
   dplyr::mutate(resp_index = seq_along(timestamp)) |>
   ggplot() +
   aes(x = timestamp, y = resp_index, color = position) +
   geom_point() +
-  geom_line() +
+  # geom_line(group = 1) +
   theme(axis.text.x = element_text(angle = 90)) +
   labs(x = NULL, y = 'n') +
   theme(legend.position = "bottom", legend.title = element_blank())
@@ -73,11 +136,23 @@ registrations_clean |>
 
 ### Unit
 
-::: {.callout-note}
+```{r}
+registrations_clean |>
+  ggplot() +
+  aes(x = unit, fill = unit, color = unit) +
+  geom_bar() +
+  theme(axis.text.x = element_blank()) +
+  theme(legend.position = "bottom", legend.title = element_blank())
+```
 
-Need to clean unit variables before plotting.
-
-:::
+```{r}
+registrations_clean |>
+  ggplot() +
+  aes(x = college, fill = college, color = college) +
+  geom_bar() +
+  theme(axis.text.x = element_blank()) +
+  theme(legend.position = "bottom", legend.title = element_blank())
+```
 
 ### Position
 
