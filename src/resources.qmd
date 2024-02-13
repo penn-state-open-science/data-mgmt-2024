@@ -81,7 +81,7 @@ Need to clean unit variables before plotting.
 
 ### Position
 
-```{r fig-registrations-by-position}
+```{r fig-registrations-by-position, fig.cap="Registrations by position"}
 registrations_clean |>
   ggplot() +
   aes(x = position, fill = position) +
@@ -92,7 +92,7 @@ registrations_clean |>
 
 ### Case study
 
-```{r fig-registrations-has-case-study}
+```{r fig-registrations-has-case-study, fig.cap="Do registrants have a possible case study?"}
 registrations_clean |>
   ggplot() +
   aes(x = have_case_study) +
