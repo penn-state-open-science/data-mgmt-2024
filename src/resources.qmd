@@ -1,5 +1,101 @@
 ---
-title: "Resources"
+title: ""
 format: html
+params:
+  update_data: yes
 ---
+
+## Registrant data
+
+We try to practice what we preach, so here is the code we use to download the registration data and visualize it.
+The data file itself remains private.
+We have added `csv/` to the `.gitignore` file so that the data remains available only to users who have it locally on their computers.
+Also, note that Rick Gilmore has stored his Gmail account information in an environment variable called `GMAIL_SURVEY`.
+
+```{r}
+if (!dir.exists('csv')) {
+  message("Creating missing `csv/`.")
+  dir.create("csv")
+}
+
+if (params$update_data) {
+  options(gargle_oauth_email = Sys.getenv("GMAIL_SURVEY"))
+  googledrive::drive_auth()
+  
+  googledrive::drive_download(
+    "Data Management Workshop Spring 2024: Registration (Responses)",
+    path = "csv/data-mgmt-wksp.csv",
+    type = "csv",
+    overwrite = TRUE
+    
+  )
+  message("Data updated.")
+} else {
+  message("Using stored data.")
+}
+```
+
+```{r}
+registrations <-
+  readr::read_csv("csv/data-mgmt-wksp.csv", show_col_types = FALSE)
+registrations_clean <- registrations |>
+  dplyr::rename(
+    timestamp = "Timestamp",
+    email = 'Email Address',
+    attend = "Will you attend the workshop on Wednesday, March 27, 2024?",
+    name = "What is your name?",
+    unit = "What is your department or unit?",
+    position = "What is your current position?",
+    have_case_study = "Do you have a project or dataset that you would like to have considered for a hands-on case study?",
+    case_study_details = "If yes, in a sentence or two, please describe your project or dataset.",
+    comments = "Any comments?"
+  )
+```
+
+### Time series
+
+```{r fig-registration-time-series, fig.cap = "Time series of registrations"}
+library(ggplot2)
+
+registrations_clean |>
+  dplyr::mutate(timestamp = lubridate::mdy_hms(timestamp, 
+                                               tz = "America/New_York")) |>
+  dplyr::arrange(timestamp) |>
+  dplyr::mutate(resp_index = seq_along(timestamp)) |>
+  ggplot() +
+  aes(x = timestamp, y = resp_index, color = position) +
+  geom_point() +
+  geom_line() +
+  theme(axis.text.x = element_text(angle = 90)) +
+  labs(x = NULL, y = 'n') +
+  theme(legend.position = "bottom", legend.title = element_blank())
+```
+
+### Unit
+
+::: {.callout-note}
+
+Need to clean unit variables before plotting.
+
+:::
+
+### Position
+
+```{r fig-registrations-by-position}
+registrations_clean |>
+  ggplot() +
+  aes(x = position, fill = position) +
+  geom_bar() +
+  theme(axis.text.x = element_blank()) +
+  theme(legend.position = "bottom", legend.title = element_blank())
+```
+
+### Case study
+
+```{r fig-registrations-has-case-study}
+registrations_clean |>
+  ggplot() +
+  aes(x = have_case_study) +
+  geom_bar()
+```
 

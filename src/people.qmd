@@ -46,3 +46,12 @@ Ana Enriquez is the Copyright Officer and Head of the Office of Scholarly Commun
 aee32@psu.edu</br></br>
 :::
 ::::
+
+<!-- ### Bari Fuchs -->
+
+<!-- :::: {.columns} -->
+<!-- ::: {.column width="40%"} -->
+<!-- ::: -->
+<!-- ::: {.column width="60%"} -->
+<!-- ::: -->
+<!-- ::: -->

@@ -23,6 +23,8 @@ website:
         text: schedule
       - href: people.qmd
         text: people
+      - href: resources.qmd
+        text: more
 format:
   html:
     theme: cosmo

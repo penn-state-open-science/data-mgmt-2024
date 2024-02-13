@@ -1,5 +1,5 @@
 ---
-title: "schedule"
+title: ""
 format: html
 ---
 
@@ -13,7 +13,7 @@ All events will be held in the Penn State University Libraries Dewey Room.
 09:00 am Welcome (Nicole Lazar & Rick Gilmore)</br>
 09:15 am Good enough practices for data management (Alaina Pearce)</br>
 10:15 am Break</br>
-10:30 am Policies (Briana Wham & Ana Enriquez)</br>
+10:30 am Policies ([Briana Wham](people.qmd#briana-wham) & [Ana Enriquez](people.qmd$ana-enriquez))</br>
 11:00 am Interactive workshop</br>
 12:00 pm Lunch</br>
 12:45 pm Next steps</br>
