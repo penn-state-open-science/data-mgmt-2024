@@ -38,13 +38,14 @@ March 27, 2024</br>
 ## Register!
 
 The workshop is open to all researchers, especially graduate students and postdoctoral researchers, but space is limited.
-We have 
 
 Register today by visiting <https://forms.gle/WyD4AxajSnz1Wqe67>
 
 Or via the embedded form below:
 
 <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfHQpMvx0RT4t5NYcxcClZ0wdF8MDZh2mH9HKyo-zdsk4lo_Q/viewform?embedded=true" width="640" height="1514" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+
+See updated information about the registrants [here](resources.qmd#fig-registration-time-series) and [here](resources.qmd#fig-registration-by-dept).
 
 ## Support
 

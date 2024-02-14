@@ -3,6 +3,7 @@ title: ""
 format:
   html:
     code-fold: true
+    code-tools: true
 params:
   update_data: yes
 ---
@@ -39,33 +40,43 @@ if (!dir.exists('csv')) {
   dir.create("csv")
 }
 
+update_figs = TRUE
+
 if (params$update_data) {
   options(gargle_oauth_email = Sys.getenv("GMAIL_SURVEY"))
   googledrive::drive_auth()
   
+  new_fn <- "csv/data-mgmt-wksp.csv"
+  file.rename(new_fn, "csv/_data-mgmt-wkshp.csv")
   googledrive::drive_download(
     "Data Management Workshop Spring 2024: Registration (Responses)",
-    path = "csv/data-mgmt-wksp.csv",
+    path = new_fn,
     type = "csv",
     overwrite = TRUE
-    
   )
   message("Data updated.")
 } else {
-  message("Using stored data.")
+  if (!file.exists("csv/data-mgmt-wksp.csv")) {
+    warning("File not found: 'csv/data-mgmt-wksp.csv'")
+    update_figs = FALSE
+  } else {
+    message("Using previously stored data.")
+  }
 }
 ```
 
 We load the saved CSV.
 
 ```{r load-registration-data}
-registrations <-
-  readr::read_csv("csv/data-mgmt-wksp.csv", show_col_types = FALSE)
+if (update_figs) {
+  registrations <-
+    readr::read_csv("csv/data-mgmt-wksp.csv", show_col_types = FALSE)
+}
 ```
 
 Then we clean the data by renaming the variables, dropping the "no's", wrangling the unit names, and adding a `college` variable.
 
-```{r clean-registration-data}
+```{r clean-registration-data, eval=update_figs}
 registrations_clean <- registrations |>
   dplyr::rename(
     timestamp = "Timestamp",
@@ -101,7 +112,9 @@ registrations_clean <- registrations |>
       `Department of Nutritional Sciences` = "Nutritional Sciences",
       `Department of Medicine, Division of Endocrinology` = "Medicine",
       `Nutrition` = "Nutritional Sciences",
-      `Department of Statistics` = "Statistics"
+      `Department of Statistics` = "Statistics",
+      `RPTM` = "Recreation, Park, & Tourism Management",
+      `Kinesiology & Developmental Psychology` = "Kinesiology"
     )
   ) |>
   # Drop no attends
@@ -115,6 +128,7 @@ registrations_clean <- registrations |>
       "Biochemistry & Molecular Biology" ~ "ECoS",
       "Physics" ~ "ECoS",
       "Chemistry" ~ "ECoS",
+      "Astronomy & Astrophysics" ~ "ECos",
       "Psychology" ~ "CLA",
       "Spanish, Italian, & Portuguese" ~ "CLA",
       "Research Informatics and Publishing" ~ "Libraries",
@@ -126,8 +140,9 @@ registrations_clean <- registrations |>
       "C-SoDA" ~ "CLA",
       "Office of Digital Pedagogies and Initiatives" ~ "CLA",
       "Asian Studies" ~ "CLA",
-      "IST" ~ "IST",
       "Anthropology" ~ "CLA",
+      "Linguistics" ~ "CLA",
+      "IST" ~ "IST",
       "Chemical Engineering" ~ "Eng",
       "Civil & Environmental Engineering" ~ "Eng",
       "Material Science and Engineering" ~ "Eng",
@@ -160,14 +175,14 @@ registrations_clean <- registrations |>
 
 The following is used to modify the above code to capture new unit names, clean/normalize them, and assign them to colleges.
 
-```{r}
+```{r, eval=update_figs}
 college_na <- is.na(registrations_clean$college)
 registrations_clean$unit[college_na]
 ```
 
 ### Time series
 
-```{r fig-registration-time-series, fig.cap = "Time series of registrations from 2014-02-13 to present"}
+```{r fig-registration-time-series, fig.cap="Time series of registrations from 2014-02-13 to present", eval=update_figs}
 registrations_clean |>
   dplyr::arrange(timestamp) |>
   dplyr::mutate(resp_index = seq_along(timestamp)) |>
@@ -180,9 +195,9 @@ registrations_clean |>
   theme(legend.position = "bottom", legend.title = element_blank())
 ```
 
-### Unit
+### Unit & College
 
-```{r}
+```{r fig-registrations-by-dept, fig.cap="Registrations by department", eval=update_figs}
 registrations_clean |>
   ggplot() +
   aes(x = unit, fill = unit, color = unit) +
@@ -191,7 +206,7 @@ registrations_clean |>
   theme(legend.position = "bottom", legend.title = element_blank())
 ```
 
-```{r}
+```{r fig-registrations-by-college, fig.cap="Registrations by college", eval=update_figs}
 registrations_clean |>
   ggplot() +
   aes(x = college, fill = college, color = college) +
@@ -202,7 +217,7 @@ registrations_clean |>
 
 ### Position
 
-```{r fig-registrations-by-position, fig.cap="Registrations by position"}
+```{r fig-registrations-by-position, fig.cap="Registrations by position", eval=update_figs}
 registrations_clean |>
   ggplot() +
   aes(x = position, fill = position) +
@@ -213,10 +228,9 @@ registrations_clean |>
 
 ### Case study
 
-```{r fig-registrations-has-case-study, fig.cap="Do registrants have a possible case study?"}
+```{r fig-registrations-has-case-study, fig.cap="Do registrants have a possible case study?", eval=update_figs}
 registrations_clean |>
   ggplot() +
   aes(x = have_case_study) +
   geom_bar()
 ```
-
