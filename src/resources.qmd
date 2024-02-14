@@ -109,12 +109,15 @@ registrations_clean <- registrations |>
       `BMB` = "Biochemistry & Molecular Biology",
       `Spanish, Italian and Portuguese` = "Spanish, Italian, & Portuguese",
       `Spanish, Italian, and Portuguese` = "Spanish, Italian, & Portuguese",
+      `SIP` = "Spanish, Italian, & Portuguese",
       `Department of Nutritional Sciences` = "Nutritional Sciences",
       `Department of Medicine, Division of Endocrinology` = "Medicine",
       `Nutrition` = "Nutritional Sciences",
       `Department of Statistics` = "Statistics",
       `RPTM` = "Recreation, Park, & Tourism Management",
-      `Kinesiology & Developmental Psychology` = "Kinesiology"
+      `Kinesiology & Developmental Psychology` = "Kinesiology",
+      `Educational psychology` = "Educational Psychology",
+      `Clinical Psychology` = "Psychology"
     )
   ) |>
   # Drop no attends
@@ -142,6 +145,8 @@ registrations_clean <- registrations |>
       "Asian Studies" ~ "CLA",
       "Anthropology" ~ "CLA",
       "Linguistics" ~ "CLA",
+      "Center for Language Science" ~ "CLA",
+      "Foreign Languages" ~ "CLA",
       "IST" ~ "IST",
       "Chemical Engineering" ~ "Eng",
       "Civil & Environmental Engineering" ~ "Eng",
@@ -166,7 +171,8 @@ registrations_clean <- registrations |>
       "Center for Healthy Aging" ~ "HHD",
       "Earth & Environmental Systems Institute" ~ "EMS",
       "Energy Institute" ~ "EMS",
-      "Nursing" ~ "Nursing"
+      "Nursing" ~ "Nursing",
+      "Educational Psychology" ~ "Ed"
     ),
     .default = "Unknown",
     .missing = "Unknown"
