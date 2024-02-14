@@ -28,6 +28,16 @@ usethis::edit_r_environ()
 Add an entry like `GMAIL_SURVEY="your.google.acct@gmail.com"` to the file.
 Save it, and restart R.
 
+Then, run the following line in your console and select '1' to initiate a Google authentication screen in browser:
+```
+googledrive::drive_auth()
+```
+
+You will see something like this:
+
+![](include/img/google-auth-console.png)
+
+In your browser, grant access to Tidyverse API Packages
 :::
 
 We download the data as a CSV (if `params$update_data == TRUE`).
