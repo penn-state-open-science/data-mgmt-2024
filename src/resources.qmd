@@ -217,11 +217,13 @@ registrations_clean |>
 
 ```{r fig-registrations-by-dept, fig.cap="Registrations by department", eval=update_figs}
 registrations_clean |>
+  dplyr::filter(!is.na(unit)) |>
+  dplyr::arrange(desc(unit)) |>
   ggplot() +
-  aes(x = unit, fill = unit, color = unit) +
+  aes(x = unit, fill = college) +
   geom_bar() +
-  theme(axis.text.x = element_blank()) +
-  theme(legend.position = "bottom", legend.title = element_blank())
+  theme(legend.position = "bottom", legend.title = element_blank()) +
+  coord_flip()
 ```
 
 ```{r fig-registrations-by-college, fig.cap="Registrations by college", eval=update_figs}
