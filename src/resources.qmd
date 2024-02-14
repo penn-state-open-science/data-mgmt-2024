@@ -1,23 +1,39 @@
 ---
 title: ""
-format: html
+format:
+  html:
+    code-fold: true
 params:
   update_data: yes
 ---
 
 ## Registrant data
 
-We try to practice what we preach, so here is the code we use to download the registration data and visualize it.
+We try to practice what we preach, so we include below the code we use to download the registration data and visualize it.
+Click on the `code` arrow to show or hide the code.
 The data file itself remains private.
 We have added `csv/` to the `.gitignore` file so that the data remains available only to users who have it locally on their computers.
-Also, note that Rick Gilmore has stored his Gmail account information in an environment variable called `GMAIL_SURVEY`.
 
-```{r}
-library(ggplot2)
+::: {.callout-note}
+
+Rick Gilmore has stored his Gmail account information in an environment variable called `GMAIL_SURVEY`.
+
+To do something similar, use the `usethis` package to open your `.Renviron` variable.
+
+```
+usethis::edit_r_environ()
 ```
 
+Add an entry like `GMAIL_SURVEY="your.google.acct@gmail.com"` to the file.
+Save it, and restart R.
 
-```{r}
+:::
+
+We download the data as a CSV (if `params$update_data == TRUE`).
+
+```{r set-up-update-data}
+library(ggplot2)
+
 if (!dir.exists('csv')) {
   message("Creating missing `csv/`.")
   dir.create("csv")
@@ -40,10 +56,16 @@ if (params$update_data) {
 }
 ```
 
-```{r}
+We load the saved CSV.
+
+```{r load-registration-data}
 registrations <-
   readr::read_csv("csv/data-mgmt-wksp.csv", show_col_types = FALSE)
+```
 
+Then we clean the data by renaming the variables, dropping the "no's", wrangling the unit names, and adding a `college` variable.
+
+```{r clean-registration-data}
 registrations_clean <- registrations |>
   dplyr::rename(
     timestamp = "Timestamp",
@@ -61,13 +83,15 @@ registrations_clean <- registrations |>
   # Convert timestamp into proper dates
   dplyr::mutate(timestamp = lubridate::mdy_hms(timestamp,
                                                tz = "America/New_York")) |>
-  # Normalize names
+  # Normalize unit names
   dplyr::mutate(
     unit = dplyr::recode(
       unit,
       `ESM-Ecosystem Science and Mgmt` = "Ecosystem Science & Mgmt",
       `Earth and Environmental Systems Institute` = "Earth & Environmental Systems Institute",
       `Earth and Environmental Systems Institute` = "Earth & Environmental Systems Institute",
+      `Civil and Environmental Engineering` = "Civil & Environmental Engineering",
+      `Civil and Environmental Eng` = "Civil & Environmental Engineering",
       `FOOD SCIENCE` = "Food Science",
       `Earth and Mineral Sciences, Energy Institute` = "Energy Institute",
       `Center for Healthy Aging / HHD` = "Center for Healthy Aging",
@@ -75,9 +99,13 @@ registrations_clean <- registrations |>
       `Spanish, Italian and Portuguese` = "Spanish, Italian, & Portuguese",
       `Spanish, Italian, and Portuguese` = "Spanish, Italian, & Portuguese",
       `Department of Nutritional Sciences` = "Nutritional Sciences",
-      `Department of Medicine, Division of Endocrinology` = "Medicine"
+      `Department of Medicine, Division of Endocrinology` = "Medicine",
+      `Nutrition` = "Nutritional Sciences",
+      `Department of Statistics` = "Statistics"
     )
   ) |>
+  # Drop no attends
+  dplyr::filter(attend == "Yes") |>
   # Add college
   dplyr::mutate(
     college = dplyr::case_match(
@@ -101,7 +129,7 @@ registrations_clean <- registrations |>
       "IST" ~ "IST",
       "Anthropology" ~ "CLA",
       "Chemical Engineering" ~ "Eng",
-      "Civil and Environmental Eng" ~ "Eng",
+      "Civil & Environmental Engineering" ~ "Eng",
       "Material Science and Engineering" ~ "Eng",
       "Engineering Science & Mechanics" ~ "Eng",
       "Biomedical Engineering" ~ "Eng",
@@ -116,6 +144,7 @@ registrations_clean <- registrations |>
       "Ecosystem Science & Mgmt" ~ "Ag",
       "Entomology" ~ "Ag",
       "Plant Pathology & Environmental Microbiology" ~ "Ag",
+      "Plant Science" ~ "Ag",
       "Neuroscience" ~ "Med",
       "Medicine" ~ "Med",
       "College of Human and Health Development" ~ "HHD",
@@ -129,9 +158,16 @@ registrations_clean <- registrations |>
   )
 ```
 
+The following is used to modify the above code to capture new unit names, clean/normalize them, and assign them to colleges.
+
+```{r}
+college_na <- is.na(registrations_clean$college)
+registrations_clean$unit[college_na]
+```
+
 ### Time series
 
-```{r fig-registration-time-series, fig.cap = "Time series of registrations"}
+```{r fig-registration-time-series, fig.cap = "Time series of registrations from 2014-02-13 to present"}
 registrations_clean |>
   dplyr::arrange(timestamp) |>
   dplyr::mutate(resp_index = seq_along(timestamp)) |>

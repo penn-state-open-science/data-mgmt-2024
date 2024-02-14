@@ -30,7 +30,7 @@ Penn State University Libraries</br>
 University Park, PA
 
 March 27, 2024</br>
-8:30 am - 2:00 pm, March 27, 2024
+8:30 am - 2:00 pm
 :::
 ::::
 
@@ -38,6 +38,7 @@ March 27, 2024</br>
 ## Register!
 
 The workshop is open to all researchers, especially graduate students and postdoctoral researchers, but space is limited.
+We have 
 
 Register today by visiting <https://forms.gle/WyD4AxajSnz1Wqe67>
 
