@@ -117,7 +117,8 @@ registrations_clean <- registrations |>
       `RPTM` = "Recreation, Park, & Tourism Management",
       `Kinesiology & Developmental Psychology` = "Kinesiology",
       `Educational psychology` = "Educational Psychology",
-      `Clinical Psychology` = "Psychology"
+      `Clinical Psychology` = "Psychology",
+      `Communication Sciences and Disorders` = "Communication Sciences & Disorders"
     )
   ) |>
   # Drop no attends
@@ -172,7 +173,8 @@ registrations_clean <- registrations |>
       "Earth & Environmental Systems Institute" ~ "EMS",
       "Energy Institute" ~ "EMS",
       "Nursing" ~ "Nursing",
-      "Educational Psychology" ~ "Ed"
+      "Educational Psychology" ~ "Ed",
+      "Communication Sciences & Disorders" ~ "HHD"
     ),
     .default = "Unknown",
     .missing = "Unknown"
