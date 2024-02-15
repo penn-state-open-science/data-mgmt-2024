@@ -137,7 +137,8 @@ registrations_clean <- registrations |>
       `Educational psychology` = "Educational Psychology",
       `Clinical Psychology` = "Psychology",
       `Communication Sciences and Disorders` = "Communication Sciences & Disorders",
-      `Center for Healthy Aging; Department of Psychology` = "Center for Healthy Aging"
+      `Center for Healthy Aging; Department of Psychology` = "Center for Healthy Aging",
+      `MCIBS` = "Molecular, Cellular, & Integrative Biosciences"
     )
   ) |>
   # Drop no attends
@@ -192,6 +193,7 @@ registrations_clean <- registrations |>
       "Center for Healthy Aging" ~ "HHD",
       "Earth & Environmental Systems Institute" ~ "EMS",
       "Energy Institute" ~ "EMS",
+      "Geosciences" ~ "EMS",
       "Nursing" ~ "Nursing",
       "Educational Psychology" ~ "Ed",
       "Communication Sciences & Disorders" ~ "HHD"

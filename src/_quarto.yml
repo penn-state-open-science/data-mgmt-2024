@@ -27,7 +27,7 @@ website:
         text: more
 format:
   html:
-    theme: cosmo
+    theme: default
     css: include/css/styles.css
     csl: include/bib/apa.csl
     bibliography: [include/bib/psu-repro.bib]
