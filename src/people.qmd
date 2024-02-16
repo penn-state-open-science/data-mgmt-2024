@@ -61,3 +61,19 @@ baf44@psu.edu
 
 :::
 :::
+
+### Sai Koneru
+
+:::: {.columns}
+::: {.column width="40%"}
+![](include/img/koneru-sai.jpg)
+
+:::
+::: {.column width="60%"}
+
+Sai is a PhD student in the college of Information Sciences and Technology. His research is in Natural Language Processing, developing novel methods to combine text and underlying network structure to understand scholarly output. Sai’s interests include open science, scientific reproducibility, and disinformation.
+
+sdk96@psu.edu
+
+:::
+:::
