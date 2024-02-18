@@ -4,6 +4,7 @@ format:
   html:
     code-fold: true
     code-tools: true
+    toc: true
 params:
   update_data: yes
 ---
@@ -266,3 +267,43 @@ registrations_clean |>
   aes(x = have_case_study) +
   geom_bar()
 ```
+
+## Consulting OpenAI
+
+Just for fun, we thought we would ask [OpenAI](https://openai.com) for some insights about data management practices.
+
+The following code sketch is not run and will not work as-is, but is used as a sketch for how to do this sort of thing.
+
+```{r}
+#| label: open-ai-image
+#| eval: FALSE
+
+ai_img <- openai::create_image(prompt = "good enough data management practices", size="512x512", response_format = "url")
+```
+
+![OpenAI response to "good enough data management practices"](include/img/open-ai-good-enough-data-mgmt.png)
+
+Similarly, the response below was generated from the prompt "suggestions about good enough data management practices".
+
+```{r}
+#| label: open-ai-text
+#| eval: FALSE
+
+create_chat_completion(model = "gpt-3.5-turbo",
+                       messages = list(
+                         list("role" = "user",
+                              "content" = "suggestions about good enough data management practices")
+                       ))
+```
+
+>1. Regularly backup your data to prevent data loss in case of system failure or accidental deletion.
+>2. Keep your data organized by creating folders and subfolders with clear and consistent naming conventions.
+>3. Use encryption to protect sensitive data from unauthorized access. 
+>4. Implement access controls to ensure that only authorized individuals can view or modify certain data.
+>5. Regularly review and update data security protocols to stay ahead of potential threats.
+>6. Dispose of outdated data securely and in line with data protection regulations.
+>7. Conduct regular data audits to ensure the accuracy and completeness of your data. 
+>8. Train employees on data management best practices to ensure everyone is following proper procedures.
+>9. Utilize data management software or tools to automate and streamline data processes.
+>10. Seek guidance from data management experts or consultants for additional strategies and recommendations.
+
