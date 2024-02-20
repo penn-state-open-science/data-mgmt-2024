@@ -94,6 +94,12 @@ if (update_figs) {
 
 Then we clean the data by renaming the variables, dropping the "no's", wrangling the unit names, and adding a `college` variable.
 
+::: {.callout-note}
+
+**TO-DO:** Remove duplicate entries. Drop timestamp beforehand since it will be unique even among duplicates in other fields.
+
+:::
+
 ```{r clean-registration-data, eval=update_figs}
 registrations_clean <- registrations |>
   dplyr::rename(
