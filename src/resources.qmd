@@ -139,7 +139,12 @@ registrations_clean <- registrations |>
       `Clinical Psychology` = "Psychology",
       `Communication Sciences and Disorders` = "Communication Sciences & Disorders",
       `Center for Healthy Aging; Department of Psychology` = "Center for Healthy Aging",
-      `MCIBS` = "Molecular, Cellular, & Integrative Biosciences"    )
+      `MCIBS` = "Molecular, Cellular, & Integrative Biosciences",
+      `Department of Chemical Engineering` = "Chemical Engineering",
+      `Biobehavioral health` = "Biobehavioral Health",
+      `EE` = "Electrical Engineering",
+      `Agricultural and biological engineering` = "Agricultural & Biological Engineering"
+      )
   ) |>
   # Drop no attends
   dplyr::filter(attend == "Yes") |>
@@ -152,7 +157,7 @@ registrations_clean <- registrations |>
       "Biochemistry, Microbiology, & Molecular Biology" ~ "ECoS",
       "Physics" ~ "ECoS",
       "Chemistry" ~ "ECoS",
-      "Astronomy & Astrophysics" ~ "ECos",
+      "Astronomy & Astrophysics" ~ "ECoS",
       "Psychology" ~ "CLA",
       "Spanish, Italian, & Portuguese" ~ "CLA",
       "Research Informatics and Publishing" ~ "Libraries",
@@ -176,8 +181,11 @@ registrations_clean <- registrations |>
       "Engineering Science & Mechanics" ~ "Eng",
       "Biomedical Engineering" ~ "Eng",
       "Mechanical Engineering" ~ "Eng",
+      "Electrical Engineering" ~ "Eng",
+      "Chemical Engineering" ~ "Eng",
       "Nutritional Sciences" ~ "HHD",
       "HDFS" ~ "HHD",
+      "Communication Sciences & Disorders" ~ "HHD",
       "Kinesiology" ~ "HHD",
       "Recreation, Park, & Tourism Management" ~ "HHD",
       "Bellisario College of Communication" ~ "Comm",
@@ -187,17 +195,21 @@ registrations_clean <- registrations |>
       "Entomology" ~ "Ag",
       "Plant Pathology & Environmental Microbiology" ~ "Ag",
       "Plant Science" ~ "Ag",
+      "Agricultural & Biological Engineering" ~ "Ag",
+      "Landscape Architecture" ~ "Arts & Arch",
       "Neuroscience" ~ "Med",
       "Medicine" ~ "Med",
       "College of Human and Health Development" ~ "HHD",
       "Center for Healthy Aging" ~ "HHD",
       "Center for Childhood Obesity Research" ~ "HHD",
+      "Biobehavioral Health" ~ "HHD",
       "Earth & Environmental Systems Institute" ~ "EMS",
+      "Geography" ~ "EMS",
       "Energy Institute" ~ "EMS",
       "Geosciences" ~ "EMS",
       "Nursing" ~ "Nursing",
       "Educational Psychology" ~ "Ed",
-      "Communication Sciences & Disorders" ~ "HHD"
+      "Molecular, Cellular, & Integrative Biosciences" ~ "Huck"
     ),
     .default = "Unknown",
     .missing = "Unknown"
