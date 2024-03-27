@@ -35,7 +35,6 @@ Here are links to some of the sources mentioned during the workshop presentation
   - 2023 Bootcamp [site](https://penn-state-open-science.github.io/bootcamp-2023/), [repo](https://github.com/penn-state-open-science//bootcamp-2023/)
   - 2022-23 interest and knowledge survey [site](https://penn-state-open-science.github.io/survey-fall-2022), [repo](https://github.com/penn-state-open-science/survey-fall-2022)
 - Wickham, H. (2014). Tidy Data, *Journal of Statistical Software*, <https://doi.org/10.18637/jss.v059.i10>.
-- Sample "untidy" [data](xlsx/data_mgmt_workshop_data.xlsx)
 
 ### Data management policies (Briana Wham and Ana Enriquez)
 
@@ -45,6 +44,14 @@ Here are links to some of the sources mentioned during the workshop presentation
 - [Penn State Data Storage Finder](https://datastoragefinder.psu.edu)
 - (Draft) [Penn State Research Data Management Policy](https://www.research.psu.edu/research-data-management-policy)
 - [Penn State Policy IP01](https://policy.psu.edu/policies/ip01#:~:text=The%20University%20is%20granted%20the,scope%20of%20the%20University%20employment) "Ownership and Management of Intellectual Property (Formerly RA11 - Patents and Copyrights [Intellectual Property])"
+
+### Case study
+
+- Sample "untidy" [data](xlsx/data_mgmt_workshop_data.xlsx)
+
+![Comments on untidy data sample](include/img/sample-data-file-comments-1-of-2.jpeg)
+
+![Comments on untidy data sample](include/img/sample-data-file-comments-2-of-2.jpeg)
 
 ## Registrant data
 
