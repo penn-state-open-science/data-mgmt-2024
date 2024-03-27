@@ -12,6 +12,7 @@ params:
 ## Information sources
 
 - [The Turning Way](https://the-turing-way.netlify.app/index.html) handbook to reproducible, ethical and collaborative data science.
+- Goodman, A., Pepe, A., Blocker, A. W., Borgman, C. L., Cranmer, K., Crosas, M., Di Stefano, R., Gil, Y., Groth, P., Hedstrom, M., Hogg, D. W., Kashyap, V., Mahabal, A., Siemiginowska, A., & Slavkovic, A. (2014). Ten Simple Rules for the Care and Feeding of Scientific Data. *PLoS Computational Biology*, *10*(4), e1003542. <https://doi.org/10.1371/journal.pcbi.1003542>.
 
 ## Registrant data
 
