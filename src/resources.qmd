@@ -9,6 +9,10 @@ params:
   update_data: yes
 ---
 
+## Information sources
+
+- [The Turning Way](https://the-turing-way.netlify.app/index.html) handbook to reproducible, ethical and collaborative data science.
+
 ## Registrant data
 
 We try to practice what we preach, so we include below the code we use to download the registration data and visualize it.
