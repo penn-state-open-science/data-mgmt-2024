@@ -22,6 +22,8 @@ See [`resources.qmd` document](https://github.com/penn-state-open-science/data-m
 
 ## Information sources
 
+Here are links to some of the sources mentioned during the workshop presentations.
+
 ### Good enough data management and project management practices (Alaina Pearce)
 
 - [The Turning Way](https://the-turing-way.netlify.app/index.html) handbook to reproducible, ethical and collaborative data science.
@@ -42,6 +44,7 @@ See [`resources.qmd` document](https://github.com/penn-state-open-science/data-m
 - Data Management Plan Tool [(DMPTool)](https://dmptool.org)
 - [Penn State Data Storage Finder](https://datastoragefinder.psu.edu)
 - (Draft) [Penn State Research Data Management Policy](https://www.research.psu.edu/research-data-management-policy)
+- [Penn State Policy IP01](https://policy.psu.edu/policies/ip01#:~:text=The%20University%20is%20granted%20the,scope%20of%20the%20University%20employment) "Ownership and Management of Intellectual Property (Formerly RA11 - Patents and Copyrights [Intellectual Property])"
 
 ## Registrant data
 
