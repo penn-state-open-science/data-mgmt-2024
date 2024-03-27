@@ -16,7 +16,7 @@ To reveal or hide the code, click on the button at the upper right.
 ::: {.callout-tip}
 
 Code hiding (folding) and showing is controlled by the `code-fold` and `code-tools` parameters in the YAML header for your document.
-See the `resources.qmd` of this document to see what we're talking about.
+See [`resources.qmd` document](https://github.com/penn-state-open-science/data-mgmt-2024/blob/main/src/resources.qmd) to see how this is done.
 
 :::
 
@@ -31,6 +31,7 @@ See the `resources.qmd` of this document to see what we're talking about.
   - 2023 Bootcamp [site](https://penn-state-open-science.github.io/bootcamp-2023/), [repo](https://github.com/penn-state-open-science//bootcamp-2023/)
   - 2022-23 interest and knowledge survey [site](https://penn-state-open-science.github.io/survey-fall-2022), [repo](https://github.com/penn-state-open-science/survey-fall-2022)
 - Wickham, H. (2014). Tidy Data, *Journal of Statistical Software*, <https://doi.org/10.18637/jss.v059.i10>.
+- Sample "untidy" [data](xlsx/data_mgmt_workshop_data.xlsx)
 
 ## Registrant data
 
