@@ -1,5 +1,5 @@
 ---
-title: "Good enough data management practices"
+title: "Good enough data and project management practices"
 subtitle: "A workshop"
 format: html
 ---
