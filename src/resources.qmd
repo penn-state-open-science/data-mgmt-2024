@@ -12,7 +12,13 @@ params:
 ## Information sources
 
 - [The Turning Way](https://the-turing-way.netlify.app/index.html) handbook to reproducible, ethical and collaborative data science.
-- Goodman, A., Pepe, A., Blocker, A. W., Borgman, C. L., Cranmer, K., Crosas, M., Di Stefano, R., Gil, Y., Groth, P., Hedstrom, M., Hogg, D. W., Kashyap, V., Mahabal, A., Siemiginowska, A., & Slavkovic, A. (2014). Ten Simple Rules for the Care and Feeding of Scientific Data. *PLoS Computational Biology*, *10*(4), e1003542. <https://doi.org/10.1371/journal.pcbi.1003542>.
+- Goodman, A., Pepe, A., Blocker, A. W., Borgman, C. L., Cranmer, K., Crosas, M., Di Stefano, R., Gil, Y., Groth, P., Hedstrom, M., Hogg, D. W., Kashyap, V., Mahabal, A., Siemiginowska, A., & Slavkovic, A. (2014). Ten simple rules for the care and feeding of scientific data. *PLoS Computational Biology*, *10*(4), e1003542. <https://doi.org/10.1371/journal.pcbi.1003542>.
+- Version control
+  - [GitHub](https://github.com), a web service for version control using git.
+  - [Subversion](https://subversion.apache.org), a web service for version control using git
+- Penn State Open Science [GitHub repo](https://github.com/penn-state-open-science)
+  - 2023 Bootcamp [site](https://penn-state-open-science.github.io/bootcamp-2023/), [repo](https://github.com/penn-state-open-science//bootcamp-2023/)
+  - 2022-23 interest and knowledge survey [site](https://penn-state-open-science.github.io/survey-fall-2022) [repo](https://github.com/penn-state-open-science/survey-fall-2022)
 
 ## Registrant data
 
@@ -25,9 +31,10 @@ We have added `csv/` to the `.gitignore` file so that the data remains available
 
 Rick Gilmore has stored his Gmail account information in an environment variable called `GMAIL_SURVEY`.
 
-To do something similar, use the `usethis` package to open your `.Renviron` variable.
+To do something similar, use the [`usethis` package](https://cran.r-project.org/package=usethis) to open your `.Renviron` variable.
 
 ```
+install.packages("usethis") # if not installed already
 usethis::edit_r_environ()
 ```
 
@@ -37,6 +44,7 @@ Save it, and restart R.
 Then, run the following line in your console:
 
 ```
+install.packages("googledrive") # if not installed already
 googledrive::drive_auth()
 ```
 
