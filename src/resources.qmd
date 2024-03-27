@@ -22,6 +22,8 @@ See [`resources.qmd` document](https://github.com/penn-state-open-science/data-m
 
 ## Information sources
 
+### Good enough data management and project management practices (Alaina Pearce)
+
 - [The Turning Way](https://the-turing-way.netlify.app/index.html) handbook to reproducible, ethical and collaborative data science.
 - Goodman, A., Pepe, A., Blocker, A. W., Borgman, C. L., Cranmer, K., Crosas, M., Di Stefano, R., Gil, Y., Groth, P., Hedstrom, M., Hogg, D. W., Kashyap, V., Mahabal, A., Siemiginowska, A., & Slavkovic, A. (2014). Ten simple rules for the care and feeding of scientific data. *PLoS Computational Biology*, *10*(4), e1003542. <https://doi.org/10.1371/journal.pcbi.1003542>.
 - Version control
@@ -32,6 +34,14 @@ See [`resources.qmd` document](https://github.com/penn-state-open-science/data-m
   - 2022-23 interest and knowledge survey [site](https://penn-state-open-science.github.io/survey-fall-2022), [repo](https://github.com/penn-state-open-science/survey-fall-2022)
 - Wickham, H. (2014). Tidy Data, *Journal of Statistical Software*, <https://doi.org/10.18637/jss.v059.i10>.
 - Sample "untidy" [data](xlsx/data_mgmt_workshop_data.xlsx)
+
+### Data management policies (Briana Wham and Ana Enriquez)
+
+- The (Dr. Alondra) Nelson [memo](https://www.whitehouse.gov/wp-content/uploads/2022/08/08-2022-OSTP-Public-access-Memo.pdf) on "Ensuring Free, Immediate, and Equitable Access to Federally Funded Research"
+- [NIH Data Management and Sharing Policy](https://sharing.nih.gov/data-management-and-sharing-policy)
+- Data Management Plan Tool [(DMPTool)](https://dmptool.org)
+- [Penn State Data Storage Finder](https://datastoragefinder.psu.edu)
+- (Draft) [Penn State Research Data Management Policy](https://www.research.psu.edu/research-data-management-policy)
 
 ## Registrant data
 
