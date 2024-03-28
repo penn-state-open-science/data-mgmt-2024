@@ -26,7 +26,7 @@ Here are links to some of the sources mentioned during the workshop presentation
 
 ### Good enough data management and project management practices (Alaina Pearce)
 
-- [The Turning Way](https://the-turing-way.netlify.app/index.html) handbook to reproducible, ethical and collaborative data science.
+- [The Turing Way](https://the-turing-way.netlify.app/index.html) handbook to reproducible, ethical and collaborative data science.
 - Goodman, A., Pepe, A., Blocker, A. W., Borgman, C. L., Cranmer, K., Crosas, M., Di Stefano, R., Gil, Y., Groth, P., Hedstrom, M., Hogg, D. W., Kashyap, V., Mahabal, A., Siemiginowska, A., & Slavkovic, A. (2014). Ten simple rules for the care and feeding of scientific data. *PLoS Computational Biology*, *10*(4), e1003542. <https://doi.org/10.1371/journal.pcbi.1003542>.
 - Version control
   - [GitHub](https://github.com), a web service for version control using git.
@@ -38,6 +38,7 @@ Here are links to some of the sources mentioned during the workshop presentation
 
 ### Data management policies (Briana Wham and Ana Enriquez)
 
+- Talk slides ([pptx](pptx/wham-enriquez-policies-for-data-mgmt-2024-03-27.pptx))
 - The (Dr. Alondra) Nelson [memo](https://www.whitehouse.gov/wp-content/uploads/2022/08/08-2022-OSTP-Public-access-Memo.pdf) on "Ensuring Free, Immediate, and Equitable Access to Federally Funded Research"
 - [NIH Data Management and Sharing Policy](https://sharing.nih.gov/data-management-and-sharing-policy)
 - Data Management Plan Tool [(DMPTool)](https://dmptool.org)
@@ -52,6 +53,9 @@ Here are links to some of the sources mentioned during the workshop presentation
 ![Comments on untidy data sample](include/img/sample-data-file-comments-1-of-2.jpeg)
 
 ![Comments on untidy data sample](include/img/sample-data-file-comments-2-of-2.jpeg)
+
+- Problem with MS Excel's automatic [conversion names for genes](https://www.theverge.com/2020/8/6/21355674/human-genes-rename-microsoft-excel-misreading-dates)
+
 ### Discussion
 
 - [Catch-22](https://en.wikipedia.org/wiki/Catch-22) and Joseph Heller's [career at Penn State](https://cals.la.psu.edu/news/marathon-reading-of-catch-22/)
@@ -382,7 +386,7 @@ registrations_clean |>
 
 #### Attendees
 
-```{r fig-attendees-by-position, fig.cap="Registrations by position", eval=update_figs}
+```{r fig-attendees-by-position, fig.cap="Attendees by position", eval=update_figs}
 attendees_clean |>
   ggplot() +
   aes(x = position, fill = position) +
@@ -390,6 +394,25 @@ attendees_clean |>
   theme(axis.text.x = element_blank()) +
   theme(legend.position = "bottom", legend.title = element_blank())
 ```
+
+### Listserv subscribers
+
+```{r fig-list-subscribers-by-college, fig.cap="New list subscribers by college"}
+new_list_subscribers <- registrations_clean |>
+  dplyr::filter(add_listserv == "yes") |>
+  dplyr::filter(!is.na(college))
+
+new_list_subscribers |>
+  ggplot() +
+  aes(x = college, fill = college, color = college) +
+  geom_bar() +
+  theme(axis.text.x = element_blank()) +
+  theme(legend.position = "bottom", legend.title = element_blank())
+
+n_new_subscribers <- dim(new_list_subscribers)[1]
+```
+
+We had `{r} n_new_subscribers` new subscribers to the open science listserv.
 
 ### Case study
 
