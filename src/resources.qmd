@@ -6,7 +6,7 @@ format:
     code-tools: true
     toc: true
 params:
-  update_data: no
+  update_data: yes
 ---
 
 This page has links, code, and data visualizations that support the material presented in the workshop.
@@ -52,6 +52,9 @@ Here are links to some of the sources mentioned during the workshop presentation
 ![Comments on untidy data sample](include/img/sample-data-file-comments-1-of-2.jpeg)
 
 ![Comments on untidy data sample](include/img/sample-data-file-comments-2-of-2.jpeg)
+### Discussion
+
+- [Catch-22](https://en.wikipedia.org/wiki/Catch-22) and Joseph Heller's [career at Penn State](https://cals.la.psu.edu/news/marathon-reading-of-catch-22/)
 
 ## Registrant data
 
@@ -210,6 +213,8 @@ registrations_clean <- registrations |>
       "Physics" ~ "ECoS",
       "Chemistry" ~ "ECoS",
       "Astronomy & Astrophysics" ~ "ECoS",
+      "Eberly" ~ "ECos",
+      "Eberly" ~ "ECos",
       "Psychology" ~ "CLA",
       "Spanish, Italian, & Portuguese" ~ "CLA",
       "Research Informatics and Publishing" ~ "Libraries",
@@ -240,6 +245,7 @@ registrations_clean <- registrations |>
       "Communication Sciences & Disorders" ~ "HHD",
       "Kinesiology" ~ "HHD",
       "Recreation, Park, & Tourism Management" ~ "HHD",
+      "Prevention Center" ~ "HHD",
       "Bellisario College of Communication" ~ "Comm",
       "Marketing" ~ "Smeal",
       "Food Science" ~ "Ag",
@@ -261,7 +267,8 @@ registrations_clean <- registrations |>
       "Geosciences" ~ "EMS",
       "Nursing" ~ "Nursing",
       "Educational Psychology" ~ "Ed",
-      "Molecular, Cellular, & Integrative Biosciences" ~ "Huck"
+      "Molecular, Cellular, & Integrative Biosciences" ~ "Huck",
+      "University Libraries" ~ "Libraries"
     ),
     .default = "Unknown",
     .missing = "Unknown"
@@ -282,7 +289,7 @@ registrations_clean |>
   dplyr::arrange(timestamp) |>
   dplyr::mutate(resp_index = seq_along(timestamp)) |>
   ggplot() +
-  aes(x = timestamp, y = resp_index, color = position) +
+  aes(x = timestamp, y = resp_index) +
   geom_point() +
   # geom_line(group = 1) +
   theme(axis.text.x = element_text(angle = 90)) +
@@ -292,9 +299,57 @@ registrations_clean |>
 
 ### Unit & College
 
+#### Registrations
+
 ```{r fig-registrations-by-dept, fig.cap="Registrations by department", eval=update_figs}
-registrations_clean |>
-  dplyr::filter(!is.na(unit)) |>
+
+registrations_by_dept <- registrations_clean |>
+  dplyr::filter(!is.na(unit))
+
+registrations_by_dept |>
+  dplyr::arrange(desc(unit)) |>
+  ggplot() +
+  aes(x = unit, fill = college) +
+  geom_bar() +
+  theme(legend.position = "bottom", legend.title = element_blank()) +
+  coord_flip()
+
+n_registrations <- dim(registrations_clean)[1]
+
+n_depts_registrations <- length(unique(registrations_by_dept$unit))
+n_coll_registrations <- length(unique(registrations_by_dept$college))
+```
+
+We had `{r} n_registrations` registrations from `{r} n_depts_registrations` departments representing `{r} n_coll_registrations` colleges.
+
+```{r fig-registrations-by-college, fig.cap="Registrations by college", eval=update_figs}
+registrations_by_dept |>
+  ggplot() +
+  aes(x = college, fill = college, color = college) +
+  geom_bar() +
+  theme(axis.text.x = element_blank()) +
+  theme(legend.position = "bottom", legend.title = element_blank())
+```
+
+#### Attendees
+
+```{r}
+attendees_clean <- registrations_clean |>
+  dplyr::filter(status %in% c("attended", "presenter"))
+
+n_attendees <- dim(attendees_clean)[1]
+
+attendees_by_dept <- attendees_clean |>
+  dplyr::filter(!is.na(unit))
+
+n_depts_attendees <- length(unique(attendees_by_dept$unit))
+n_coll_attendees <- length(unique(attendees_by_dept$college))
+```
+
+There were `{r} n_attendees` attendees from `{r} n_depts_attendees` departments representing `{r} n_coll_attendees` colleges.
+
+```{r fig-attendees-by-dept, fig.cap="Attendees by department", eval=update_figs}
+attendees_by_dept |>
   dplyr::arrange(desc(unit)) |>
   ggplot() +
   aes(x = unit, fill = college) +
@@ -303,8 +358,8 @@ registrations_clean |>
   coord_flip()
 ```
 
-```{r fig-registrations-by-college, fig.cap="Registrations by college", eval=update_figs}
-registrations_clean |>
+```{r fig-attendees-by-college, fig.cap="Attendees by college", eval=update_figs}
+attendees_clean |>
   ggplot() +
   aes(x = college, fill = college, color = college) +
   geom_bar() +
@@ -314,8 +369,21 @@ registrations_clean |>
 
 ### Position
 
+#### Registrations
+
 ```{r fig-registrations-by-position, fig.cap="Registrations by position", eval=update_figs}
 registrations_clean |>
+  ggplot() +
+  aes(x = position, fill = position) +
+  geom_bar() +
+  theme(axis.text.x = element_blank()) +
+  theme(legend.position = "bottom", legend.title = element_blank())
+```
+
+#### Attendees
+
+```{r fig-attendees-by-position, fig.cap="Registrations by position", eval=update_figs}
+attendees_clean |>
   ggplot() +
   aes(x = position, fill = position) +
   geom_bar() +
