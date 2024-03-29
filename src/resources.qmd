@@ -9,6 +9,8 @@ params:
   update_data: yes
 ---
 
+## About
+
 This page has links, code, and data visualizations that support the material presented in the workshop.
 
 To reveal or hide the code, click on the button at the upper right.
@@ -277,6 +279,19 @@ registrations_clean <- registrations |>
     .default = "Unknown",
     .missing = "Unknown"
   )
+
+registrations_clean <- registrations_clean |>
+  dplyr::mutate(
+  confirmed = dplyr::case_match(
+      confirmation_response,
+      "Sorry, can't make it" ~ "Decline",
+      "No response" ~ "No response",
+      "Yes,  I'll be there" ~ "Confirm",
+      NA ~ "No response",
+      "presenter" ~ "Confirm"),
+      .default = "Unknown",
+    .missing = "Unknown"
+  )
 ```
 
 The following is used to modify the above code to capture new unit names, clean/normalize them, and assign them to colleges.
@@ -306,7 +321,6 @@ registrations_clean |>
 #### Registrations
 
 ```{r fig-registrations-by-dept, fig.cap="Registrations by department", eval=update_figs}
-
 registrations_by_dept <- registrations_clean |>
   dplyr::filter(!is.na(unit))
 
@@ -335,6 +349,21 @@ registrations_by_dept |>
   theme(legend.position = "bottom", legend.title = element_blank())
 ```
 
+#### Confirmations
+
+```{r tbl-confirmations-by-college}
+xtabs(~ confirmed + college, registrations_clean)
+
+confirmed <- registrations_clean |>
+  dplyr::filter(confirmed == "Confirm")
+
+n_confirmed <- dim(confirmed)[1]
+n_depts_confirmed <- length(unique(confirmed$unit))
+n_coll_confirmed <- length(unique(confirmed$college))
+```
+
+We had `{r} n_confirmed` people from `{r} n_depts_confirmed` departments representing `{r} n_coll_confirmed` colleges confirm attendance.
+
 #### Attendees
 
 ```{r}
@@ -350,7 +379,7 @@ n_depts_attendees <- length(unique(attendees_by_dept$unit))
 n_coll_attendees <- length(unique(attendees_by_dept$college))
 ```
 
-There were `{r} n_attendees` attendees from `{r} n_depts_attendees` departments representing `{r} n_coll_attendees` colleges.
+There were `{r} n_attendees` people from `{r} n_depts_attendees` departments representing `{r} n_coll_attendees` colleges who attended.
 
 ```{r fig-attendees-by-dept, fig.cap="Attendees by department", eval=update_figs}
 attendees_by_dept |>
