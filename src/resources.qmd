@@ -28,6 +28,8 @@ Here are links to some of the sources mentioned during the workshop presentation
 
 ### Good enough data management and project management practices (Alaina Pearce)
 
+- Talk slides ([PDF](pdf/2024_GoodEnoughDataManagementWorkshop.pdf)).
+
 - [The Turing Way](https://the-turing-way.netlify.app/index.html) handbook to reproducible, ethical and collaborative data science.
 - Goodman, A., Pepe, A., Blocker, A. W., Borgman, C. L., Cranmer, K., Crosas, M., Di Stefano, R., Gil, Y., Groth, P., Hedstrom, M., Hogg, D. W., Kashyap, V., Mahabal, A., Siemiginowska, A., & Slavkovic, A. (2014). Ten simple rules for the care and feeding of scientific data. *PLoS Computational Biology*, *10*(4), e1003542. <https://doi.org/10.1371/journal.pcbi.1003542>.
 - Version control
@@ -41,6 +43,7 @@ Here are links to some of the sources mentioned during the workshop presentation
 ### Data management policies (Briana Wham and Ana Enriquez)
 
 - Talk slides ([pptx](pptx/wham-enriquez-policies-for-data-mgmt-2024-03-27.pptx))
+
 - The (Dr. Alondra) Nelson [memo](https://www.whitehouse.gov/wp-content/uploads/2022/08/08-2022-OSTP-Public-access-Memo.pdf) on "Ensuring Free, Immediate, and Equitable Access to Federally Funded Research"
 - [NIH Data Management and Sharing Policy](https://sharing.nih.gov/data-management-and-sharing-policy)
 - Data Management Plan Tool [(DMPTool)](https://dmptool.org)
