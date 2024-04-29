@@ -25,6 +25,8 @@ website:
         text: people
       - href: resources.qmd
         text: more
+      - href: data.qmd
+        text: data
   repo-url: https://github.com/penn-state-open-science/data-mgmt-2024
   repo-actions: [edit, issue]
   repo-subdir: src

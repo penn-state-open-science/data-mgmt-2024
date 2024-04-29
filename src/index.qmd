@@ -14,7 +14,9 @@ This workshop will provide a set of practices that can make data management and 
 
 [Alaina Pearce](people.qmd#alaina-pearce), [Briana Wham](people.qmd#briana-wham), and [Ana Enriquez](people.qmd#ana-enriquez) will lead the workshop.
 
-More details about the [schedule](schedule.qmd) and the [faculty](people.qmd) can be found by following the links.
+More details about the [schedule](schedule.qmd) and [faculty](people.qmd) can be found by following the links.
+
+Copies of the slides and some other supporting information are [here](resources.qmd), and we also have [data](data.qmd) about the participant evaluations and some of their characteristics.
 
 ## Location and time
 
